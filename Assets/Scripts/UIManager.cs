@@ -20,20 +20,16 @@ public class UIManager : MonoBehaviour
     public void ReadLetter(Letter letter)
     {
         readingManager.gameObject.SetActive(true);
-        CloseDrawer();
+        CloseDrawer(false);
         readingManager.ReadingLetter(letter);
-    }
-
-    public void CloseDrawer ()
-    {
-        drawer.SetActive(false);
-        DestroyDrawer();
     }
 
     public void CloseLetter ()
     {
         reading.SetActive(false);
         readingManager.EndReadingLetter();
+
+        OpenDrawer();
     }
 
     public void Update ()
@@ -51,16 +47,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void DestroyDrawer ()
+    public void OpenDrawer ()
     {
-        foreach (Transform child in drawerLocation)
-        {
-            Destroy(child.gameObject);
-        }
-    }
+        drawer.SetActive(true);
+        GameManager.Instance.ClosingLetterDesk();
 
-    public void PopulateDrawer ()
-    {
         List<Letter> listLetters = GameManager.Instance.letterList;
 
         //setup a quel point on peut scroll vers la gauche
@@ -77,4 +68,20 @@ public class UIManager : MonoBehaviour
             letter.Setup(this);
         }
     }
+
+    public void CloseDrawer (bool isEnding)
+    {
+        drawer.SetActive(false);
+
+        foreach (Transform child in drawerLocation)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (isEnding)
+        {
+            GameManager.Instance.ReadingLetterDesk();
+        }
+    }
+
 }

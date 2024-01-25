@@ -45,7 +45,6 @@ public class ReadingManager : MonoBehaviour
         {
             if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Moved && Input.GetTouch(1).phase == TouchPhase.Moved)
             {
-                Debug.Log("ca marche");
                 UnityEngine.Touch touch0 = Input.GetTouch(0);
                 UnityEngine.Touch touch1 = Input.GetTouch(1);
 
