@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LetterDrawer : MonoBehaviour, IPointerDownHandler
+public class LetterDrawer : MonoBehaviour, IPointerClickHandler
 {
     public Letter letter;
     public UIManager manager;
@@ -20,7 +20,7 @@ public class LetterDrawer : MonoBehaviour, IPointerDownHandler
         manager = managerScript;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         manager.ReadLetter(letter);
     }
