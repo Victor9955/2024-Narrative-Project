@@ -1289,7 +1289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeac4042457e6e148a38336cf4f09bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawer: {fileID: 692543513}
   manager: {fileID: 1729584040}
 --- !u!1 &1485940173
 GameObject:
@@ -1728,7 +1727,7 @@ MonoBehaviour:
   drawer: {fileID: 692543513}
   reading: {fileID: 165622284}
   maxScrollRight: 200
-  speedDrawer: 0.004
+  speedDrawer: 0.002
   letterTemplate: {fileID: 699817457935360424, guid: bfeacb8a24bce6c47b019a2e0c2a8f40, type: 3}
 --- !u!1 &1742364038
 GameObject:
