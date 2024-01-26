@@ -1,24 +1,30 @@
+using DG.Tweening;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    public DialogueScriptableObject test;
+    DialogueScriptableObject current;
+    [SerializeField] DialogueScriptableObject test;
 
 
     [Header("References")]
 
-    public TextMeshProUGUI text;
-    public TextMeshProUGUI characterName;
-    public Image characterIcon;
-    public Button goodChoice;
-    public Button badChoice;
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI characterName;
+    [SerializeField] Image characterIcon;
+    [SerializeField] Button goodChoice;
+    [SerializeField] Button badChoice;
+    [SerializeField] CanvasGroup group;
+    [SerializeField] float showSpeed = 2f;
+
 
     private void Awake()
     {
@@ -28,25 +34,87 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    [Button("Test Dialogue")]
-    public void BeginDialogue()
+    private void Start()
     {
-        StartCoroutine(Talk("Je vais te taper", 5));
+        goodChoice.onClick.AddListener(GoodResponse);
+        badChoice.onClick.AddListener(BadResponse);
+    }
+
+    [Button]
+    void TestDialogue()
+    {
+        BeginDialogue(test);
+    }
+
+
+    public void BeginDialogue(DialogueScriptableObject m_dialogue)
+    {
+        if (!GoogleSheetGetter.isFinished) return;
+        current = m_dialogue;
+        characterIcon.sprite = current.characterIcon;
+        characterName.text = current.characterName;
+        goodChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.goodChoice;
+        badChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.badChoice;
+        StartCoroutine(Talk(GoogleSheetGetter.data[current.textKey][GameSettings.language], current.talkSpeed));
     }
 
     IEnumerator Talk(string m_text, float m_speed)
     {
-        float beginTime = Time.time;
-        float endTime = beginTime + m_text.Length / m_speed;
+        float timer = 0f;
         text.text = m_text;
         text.maxVisibleCharacters = 0;
         text.ForceMeshUpdate();
-        while (Time.time < endTime)
+        while (timer <= 1f)
         {
-            beginTime += Time.deltaTime;
-            text.maxVisibleCharacters = (int)(m_text.Length * (beginTime / endTime));
-            yield return null;
+            yield return new WaitForFixedUpdate();
+            timer += Time.deltaTime * (m_speed / m_text.Length);
+            text.maxVisibleCharacters = (int)(m_text.Length * timer);
+            text.ForceMeshUpdate();
         }
+
         text.maxVisibleCharacters = m_text.Length;
+    }
+
+    [Button]
+    void Show()
+    {
+        DOVirtual.Float(0f, 1f, showSpeed, x => group.alpha = x);
+    }
+
+    [Button]
+    void Hide()
+    {
+        DOVirtual.Float(1f, 0f, showSpeed, x => group.alpha = x);
+    }
+    void GoodResponse()
+    {
+        if(current.nextGood != null)
+        {
+            BeginDialogue(current.nextGood);
+        }
+    }
+
+    void BadResponse()
+    {
+        if (current.nextBad != null)
+        {
+            BeginDialogue(current.nextBad);
+        }
+    }
+
+    [Button]
+    void SetLanguageToFrench()
+    {
+        GameSettings.language = "FR";
+    }
+    [Button]
+    void SetLanguageToEnglish()
+    {
+        GameSettings.language = "EN";
+    }
+    [Button]
+    void SetLanguageToEspagnol()
+    {
+        GameSettings.language = "SP";
     }
 }

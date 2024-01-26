@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51673a3eb3493e740a27baf0caf036b9, type: 3}
-  m_Name: CaptainCrochet
+  m_Name: MecBizarre
   m_EditorClassIdentifier: 
-  characterName: Captain Croshet
-  characterIcon: {fileID: 21300000, guid: 789ba516eb8ed56449943e256fb63179, type: 3}
-  textKey: INTRO_CAPTAIN
+  characterName: Mec Bizarre
+  characterIcon: {fileID: 21300000, guid: 9b5213d090fba71419377f4accf6ecfb, type: 3}
+  textKey: FIGHT
   talkSpeed: 25
-  goodChoice: Bonjour
-  badChoice: Va te faire
-  nextGood: {fileID: 11400000, guid: 467e2fab848e955409eb249decd65614, type: 2}
-  nextBad: {fileID: 11400000, guid: a11d6a3ed391dfc44a3c7b63387f2882, type: 2}
+  goodChoice: Ok
+  badChoice: T bizarre
+  nextGood: {fileID: 11400000, guid: 8132c868368b5ca4db1559a5ff068d72, type: 2}
+  nextBad: {fileID: 0}

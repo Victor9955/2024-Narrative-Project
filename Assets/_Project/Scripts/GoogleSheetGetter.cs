@@ -8,7 +8,7 @@ public class GoogleSheetGetter
 {
     public static Dictionary<string, Dictionary<string, string>> data;
 
-    public static event Action Finished;
+    public static bool isFinished = false;
 
     private static string url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5HdaSuzUGAe6OYHMpWJMFH2qcTxgWE2UdLlE53NxoXsfJE64S9TONz3fJo3iR95Pd4OincJKEnhPA/pub?output=csv";
 
@@ -31,7 +31,7 @@ public class GoogleSheetGetter
         else
         {
             Parse(asyncOperation.webRequest.downloadHandler.text);
-            Finished?.Invoke();
+            isFinished = true;
         }
     }
 

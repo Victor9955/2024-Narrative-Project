@@ -12,7 +12,7 @@ public class DialogueScriptableObject : ScriptableObject
 
     [Header("Character Text")]
     public string textKey;
-    public float talkSpeed = 5f;
+    public float talkSpeed = 25f;
 
     [Header("Choix")]
     public string goodChoice;
