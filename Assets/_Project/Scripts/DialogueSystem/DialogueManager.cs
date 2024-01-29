@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] CanvasGroup group;
     [SerializeField] float showSpeed = 2f;
 
-
+    Coroutine coroutine;
     private void Awake()
     {
         if(instance == null)
@@ -50,11 +50,32 @@ public class DialogueManager : MonoBehaviour
     public void BeginDialogue(DialogueScriptableObject m_dialogue)
     {
         if (!GoogleSheetGetter.isFinished) return;
+        if (coroutine != null) return;
         current = m_dialogue;
         characterIcon.sprite = current.characterIcon;
         characterName.text = current.characterName;
-        goodChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.goodChoice;
-        badChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.badChoice;
+
+        if(current.nextGood == null)
+        {
+            goodChoice.gameObject.SetActive(false);
+        }
+        else
+        {
+            goodChoice.gameObject.SetActive(true);
+            goodChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.goodChoice;
+        }
+
+        if (current.nextBad == null)
+        {
+            badChoice.gameObject.SetActive(false);
+        }
+        else
+        {
+            badChoice.gameObject.SetActive(true);
+            badChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.badChoice;
+        }
+
+
         StartCoroutine(Talk(GoogleSheetGetter.data[current.textKey][GameSettings.language], current.talkSpeed));
     }
 
@@ -73,10 +94,16 @@ public class DialogueManager : MonoBehaviour
         }
 
         text.maxVisibleCharacters = m_text.Length;
+
+        if (current.nextBad == null || current.nextGood == null)
+        {
+            yield return new WaitForSeconds(3f);
+            Hide();
+        }
     }
 
     [Button]
-    void Show()
+    public void Show()
     {
         DOVirtual.Float(0f, 1f, showSpeed, x => group.alpha = x);
     }
