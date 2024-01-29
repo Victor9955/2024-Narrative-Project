@@ -19,4 +19,4 @@ MonoBehaviour:
   goodChoice: Bonjour
   badChoice: Je veut pas te parler
   nextGood: {fileID: 11400000, guid: 8132c868368b5ca4db1559a5ff068d72, type: 2}
-  nextBad: {fileID: 0}
+  nextBad: {fileID: 11400000, guid: 8132c868368b5ca4db1559a5ff068d72, type: 2}

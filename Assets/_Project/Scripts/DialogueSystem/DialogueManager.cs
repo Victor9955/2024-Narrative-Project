@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
 
         text.maxVisibleCharacters = m_text.Length;
 
-        if (current.nextBad == null || current.nextGood == null)
+        if (current.nextBad == null && current.nextGood == null)
         {
             yield return new WaitForSeconds(3f);
             Hide();
