@@ -13,13 +13,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> letterList = new List<GameObject>();
 
     [Header("- SETUP -")]
-    [SerializeField] private float _movingSpeed;
     [SerializeField] private GameObject _letterParent;
     [SerializeField] private GameObject _pipette;
 
-
-    [SerializeField] private float _zoomSpeed;
-    [SerializeField] private float _maxScaleZoom;
     private MovableUI _letterDesk;
 
     [Header("- MOVEPOS -")]
