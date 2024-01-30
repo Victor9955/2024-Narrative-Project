@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
 
     [Header("- SETUP -")]
     [SerializeField] private float _movingSpeed;
-    [SerializeField] private GameObject _canvas;
+    [SerializeField] private GameObject _letterParent;
     [SerializeField] private GameObject _pipette;
+
 
     [SerializeField] private float _zoomSpeed;
     [SerializeField] private float _maxScaleZoom;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void CreateLetter ()
     {
-        GameObject letter = Instantiate(letterToCome[0], _canvas.transform);
+        GameObject letter = Instantiate(letterToCome[0], _letterParent.transform);
         _letterDesk = letter.GetComponent<MovableUI>();
         letter.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
         letterToCome.RemoveAt(0);

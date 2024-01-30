@@ -5,18 +5,17 @@ using UnityEngine.EventSystems;
 
 public class ResetOnRelease: MonoBehaviour, IEndDragHandler
 {
-    Vector3 pos;
+    [SerializeField] Transform a;
     Vector3 scale;
 
     private void Start()
     {
-        pos = transform.position;
         scale = transform.localScale;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = pos;
+        transform.position = a.position;
         transform.localScale = scale;
     }
 }
