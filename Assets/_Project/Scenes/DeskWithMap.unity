@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d222bae14738baf4c9f9b30207cf32a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 491303838}
 --- !u!1 &165622284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zoomable: 1
-  _maxScaleZoom: 5
+  _maxScaleZoom: 6.5
   _zoomSpeed: 0.001
   oldTransformScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1237300480
