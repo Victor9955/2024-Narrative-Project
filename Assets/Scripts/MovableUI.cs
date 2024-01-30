@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using NaughtyAttributes;
 
 public class MovableUI : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDragHandler
 {
+    [Header("- SETUP -")]
+    [SerializeField] private bool _zoomable;
+
+    [SerializeField, ShowIf("_zoomable")] private float _maxScaleZoom;
+    [SerializeField, ShowIf("_zoomable")] private float _zoomSpeed;
+
     [HideInInspector] public Vector3 oldTransformScale;
     private RawImage _image;
     private Vector2 _pos;
-    [SerializeField] private float _maxScaleZoom;
-    [SerializeField] private float _zoomSpeed;
-    [SerializeField] private bool _zoomable;
 
-    private Vector3 _animScale;
 
     private void Start()
     {

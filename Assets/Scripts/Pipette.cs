@@ -6,9 +6,13 @@ using UnityEngine.EventSystems;
 
 public class Pipette : MonoBehaviour, IEndDragHandler, IBeginDragHandler
 {
+    [Header("- SETUP -")]
+    [SerializeField] private Transform _canvas;
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        transform.parent = _canvas;
+        transform.SetAsLastSibling();
     }
 
     public void OnEndDrag(PointerEventData eventData)

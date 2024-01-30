@@ -7,19 +7,18 @@ using UnityEngine.UI;
 
 public class LetterDrawer : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject letter;
-    public UIManager manager;
-
-    [SerializeField] private RawImage image;
+    public GameObject letterPrefab;
+    [SerializeField] private UIManager _manager;
+    [SerializeField] private RawImage _image;
 
     public void Setup (UIManager managerScript)
     {
-        image.texture = letter.GetComponent<RawImage>().texture;
-        manager = managerScript;
+        _image.texture = letterPrefab.GetComponent<RawImage>().texture;
+        _manager = managerScript;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        manager.ReadLetter(letter);
+        _manager.ReadLetter(letterPrefab);
     }
 }

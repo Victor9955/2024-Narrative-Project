@@ -7,7 +7,6 @@ public class MenuDrawer : MonoBehaviour, IPointerDownHandler
 {
     public UIManager manager;
 
-
     public void OnPointerDown(PointerEventData eventData)
     {
         manager.OpenDrawer();
