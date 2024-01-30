@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,9 @@ public class GoogleSheetGetter
 {
     public static Dictionary<string, Dictionary<string, string>> data;
 
-    private static string url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5HdaSuzUGAe6OYHMpWJMFH2qcTxgWE2UdLlE53NxoXsfJE64S9TONz3fJo3iR95Pd4OincJKEnhPA/pub?gid=0&single=true&output=csv";
+    public static bool isFinished = false;
+
+    private static string url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5HdaSuzUGAe6OYHMpWJMFH2qcTxgWE2UdLlE53NxoXsfJE64S9TONz3fJo3iR95Pd4OincJKEnhPA/pub?output=csv";
 
     private static UnityWebRequestAsyncOperation asyncOperation;
 
@@ -28,6 +31,7 @@ public class GoogleSheetGetter
         else
         {
             Parse(asyncOperation.webRequest.downloadHandler.text);
+            isFinished = true;
         }
     }
 
@@ -51,6 +55,7 @@ public class GoogleSheetGetter
     {
         List<string[]> rows = new List<string[]>();
         string[] lines = csvString.Split('\n');
+
         foreach (string line in lines)
         {
             string[] columns = line.Trim().Split(',');

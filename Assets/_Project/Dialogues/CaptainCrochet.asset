@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51673a3eb3493e740a27baf0caf036b9, type: 3}
+  m_Name: CaptainCrochet
+  m_EditorClassIdentifier: 
+  characterName: Captain Croshet
+  characterIcon: {fileID: 21300000, guid: 789ba516eb8ed56449943e256fb63179, type: 3}
+  textKey: INTRO_CAPTAIN
+  talkSpeed: 25
+  goodChoice: Bonjour
+  badChoice: Va te faire
+  nextGood: {fileID: 11400000, guid: 467e2fab848e955409eb249decd65614, type: 2}
+  nextBad: {fileID: 11400000, guid: a11d6a3ed391dfc44a3c7b63387f2882, type: 2}
