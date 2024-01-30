@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Levels/Menu.unity
     guid: c86f2c99ff7a7b74e9dbd4fb4a73c28c
   - enabled: 1
+    path: Assets/_Project/Scenes/DeskWithMap.unity
+    guid: c88bd32f9290aae439c8b0b2f96faf33
+  - enabled: 0
     path: Assets/Levels/Desk.unity
     guid: 255906d82cdb0c84d904c887effc3831
   m_configObjects: {}

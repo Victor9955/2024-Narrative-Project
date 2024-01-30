@@ -398,6 +398,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 82513327}
     m_Modifications:
+    - target: {fileID: 440327204442821132, guid: b9318cb61ca9b664a812291d4304fca5, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: ad36941412825e247a1c7cc916c67a56, type: 2}
+    - target: {fileID: 440327204442821132, guid: b9318cb61ca9b664a812291d4304fca5, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5568682522828220384, guid: ad36941412825e247a1c7cc916c67a56, type: 2}
+    - target: {fileID: 440327204442821132, guid: b9318cb61ca9b664a812291d4304fca5, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5662876776833828111, guid: b9318cb61ca9b664a812291d4304fca5, type: 3}
       propertyPath: m_Name
       value: DialoqueManager
