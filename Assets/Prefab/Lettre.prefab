@@ -58,9 +58,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d2fcd9b11ad1f418e33f7f324f1934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letter: {fileID: 260070930891871398, guid: ad16cd5c7d4720e448d1a380ff927798, type: 3}
-  manager: {fileID: 0}
-  image: {fileID: 2955282558592185103}
+  letterPrefab: {fileID: 0}
+  _manager: {fileID: 0}
+  _image: {fileID: 2955282558592185103}
 --- !u!1 &7531344791236103951
 GameObject:
   m_ObjectHideFlags: 0
