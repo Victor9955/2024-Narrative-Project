@@ -9,10 +9,7 @@ using UnityEngine.UI;
 public class ReadingManager : MonoBehaviour
 {
 
-    public TextMeshProUGUI titre;
-    public TextMeshProUGUI corps;
-    public RectTransform image;
-
+    private GameObject currentLetter;
     private Vector2 oldTransformScale;
 
     [SerializeField] private float zoomSpeed;
@@ -21,22 +18,20 @@ public class ReadingManager : MonoBehaviour
     [SerializeField] private Vector2 minMaxHorizontal;
     [SerializeField] private Vector2 minMaxVertical;
 
-    public void ReadingLetter(Letter letter)
+    public void ReadingLetter(GameObject letter)
     {
-        titre.text = letter.title;
-        corps.text = letter.pages[0];
-        image.GetComponent<Image>().sprite = letter.letterType;
+        GameObject temp = Instantiate(letter, transform);
+        currentLetter = temp;
     }
 
     public void EndReadingLetter ()
     {
-        image.transform.position = Vector3.zero;
-        image.transform.localScale = oldTransformScale;
+        Destroy(currentLetter);
     }
 
     private void Start()
     {
-        oldTransformScale = image.transform.localScale;
+        oldTransformScale = currentLetter.transform.localScale;
     }
 
     private void Update()
@@ -56,8 +51,8 @@ public class ReadingManager : MonoBehaviour
                 float difference = currentMagnitude - prevMagnitude;
 
 
-                image.transform.localScale = image.transform.localScale + new Vector3(zoomSpeed * difference, zoomSpeed * difference, 0);
-                image.transform.localScale = new Vector3(Mathf.Clamp(image.transform.localScale.x, oldTransformScale.x, oldTransformScale.x * maxScaleZoom), Mathf.Clamp(image.transform.localScale.y, oldTransformScale.y, oldTransformScale.y * maxScaleZoom));
+                currentLetter.transform.localScale = currentLetter.transform.localScale + new Vector3(zoomSpeed * difference, zoomSpeed * difference, 0);
+                currentLetter.transform.localScale = new Vector3(Mathf.Clamp(currentLetter.transform.localScale.x, oldTransformScale.x, oldTransformScale.x * maxScaleZoom), Mathf.Clamp(currentLetter.transform.localScale.y, oldTransformScale.y, oldTransformScale.y * maxScaleZoom));
             }
             else if (Input.touchCount == 1)
             {
@@ -65,8 +60,8 @@ public class ReadingManager : MonoBehaviour
                 if (Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
                     deltaTouch = ((Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) - Input.GetTouch(0).position);
-                    image.transform.position = image.transform.position - new Vector3(deltaTouch.x * 0.001f, deltaTouch.y * 0.001f, 0);
-                    image.transform.localPosition = new Vector3(Mathf.Clamp(image.transform.localPosition.x, minMaxHorizontal.x, minMaxHorizontal.y), Mathf.Clamp(image.transform.localPosition.y, minMaxVertical.x, minMaxVertical.y), image.transform.localPosition.z);
+                    currentLetter.transform.position = currentLetter.transform.position - new Vector3(deltaTouch.x * 0.001f, deltaTouch.y * 0.001f, 0);
+                    currentLetter.transform.localPosition = new Vector3(Mathf.Clamp(currentLetter.transform.localPosition.x, minMaxHorizontal.x, minMaxHorizontal.y), Mathf.Clamp(currentLetter.transform.localPosition.y, minMaxVertical.x, minMaxVertical.y), currentLetter.transform.localPosition.z);
                 }
             }
         }

@@ -7,16 +7,14 @@ using UnityEngine.UI;
 
 public class LetterDrawer : MonoBehaviour, IPointerClickHandler
 {
-    public Letter letter;
+    public GameObject letter;
     public UIManager manager;
 
-    [SerializeField] private TextMeshProUGUI textMeshPro;
-    [SerializeField] private Image image;
+    [SerializeField] private RawImage image;
 
     public void Setup (UIManager managerScript)
     {
-        textMeshPro.text = letter.title;
-        image.sprite = letter.letterType;
+        image.texture = letter.GetComponent<RawImage>().texture;
         manager = managerScript;
     }
 
