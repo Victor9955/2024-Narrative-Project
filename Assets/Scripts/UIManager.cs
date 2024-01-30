@@ -5,51 +5,52 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public ReadingManager readingManager;
-    public Transform drawerLocation;
+    [Header("- SETUP DRAWER -")]
+    [SerializeField] private GameObject _menuDrawer;
+    [SerializeField] private GameObject _letterTemplate;
+    [SerializeField] private Transform _drawerLocation;
+    [SerializeField] private float _maxScrollRight;
+    [SerializeField] private float _speedDrawer;
 
-    public GameObject drawer;
-    public GameObject reading;
+    [Header("- SETUP READING -")]
+    [SerializeField] private ReadingManager _readingManager;
 
-     private float maxScrollLeft;
-    [SerializeField] private float maxScrollRight;
-
-    [SerializeField] private float speedDrawer;
-    [SerializeField] private GameObject letterTemplate;
+    //runtime
+    private float maxScrollLeft;
 
     public void ReadLetter(GameObject letter)
     {
-        readingManager.gameObject.SetActive(true);
+        _readingManager.gameObject.SetActive(true);
         CloseDrawer(false);
-        readingManager.ReadingLetter(letter);
+        _readingManager.ReadingLetter(letter);
     }
 
     public void CloseLetter ()
     {
-        reading.SetActive(false);
-        readingManager.EndReadingLetter();
+        _readingManager.gameObject.SetActive(false);
+        _readingManager.EndReadingLetter();
 
         OpenDrawer();
     }
 
     public void Update ()
     {
-        if (drawer.activeSelf && Input.touchCount == 1)
+        if (_menuDrawer.activeSelf && Input.touchCount == 1)
         {
             float deltaTouch;
 
             if (Input.GetTouch(0).phase == TouchPhase.Moved)
             {
                 deltaTouch = ((Input.GetTouch(0).position - Input.GetTouch(0).deltaPosition) - Input.GetTouch(0).position).x;
-                drawerLocation.position = drawerLocation.position - new Vector3(deltaTouch * speedDrawer, 0, 0);
-                drawerLocation.localPosition = new Vector3(Mathf.Clamp(drawerLocation.localPosition.x, maxScrollLeft, maxScrollRight), drawerLocation.position.y, drawerLocation.position.z);
+                _drawerLocation.position = _drawerLocation.position - new Vector3(deltaTouch * _speedDrawer, 0, 0);
+                _drawerLocation.localPosition = new Vector3(Mathf.Clamp(_drawerLocation.localPosition.x, maxScrollLeft, _maxScrollRight), _drawerLocation.position.y, _drawerLocation.position.z);
             }
         }
     }
 
     public void OpenDrawer ()
     {
-        drawer.SetActive(true);
+        _menuDrawer.SetActive(true);
         GameManager.Instance.ClosingLetterDesk();
 
         List<GameObject> listLetters = GameManager.Instance.letterList;
@@ -61,19 +62,19 @@ public class UIManager : MonoBehaviour
         //remplis le tiroir de lettres
         for (int i = 0; i < listLetters.Count; i++)
         {
-            GameObject letterDrawer = Instantiate(letterTemplate, drawerLocation.position, Quaternion.identity, drawerLocation);
+            GameObject letterDrawer = Instantiate(_letterTemplate, _drawerLocation.position, Quaternion.identity, _drawerLocation);
             LetterDrawer letter = letterDrawer.GetComponent<LetterDrawer>();
 
-            letter.letter = listLetters[i];
+            letter.letterPrefab = listLetters[i];
             letter.Setup(this);
         }
     }
 
     public void CloseDrawer (bool isEnding)
     {
-        drawer.SetActive(false);
+        _menuDrawer.SetActive(false);
 
-        foreach (Transform child in drawerLocation)
+        foreach (Transform child in _drawerLocation)
         {
             Destroy(child.gameObject);
         }
