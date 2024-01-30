@@ -8,4 +8,7 @@ public class Letter : ScriptableObject
     public Sprite letterType;
     public string title;
     public List<string> pages = new List<string>();
+
+    public Sprite letterWith;
+    public Sprite letterWithout;
 }

@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float speedDrawer;
     [SerializeField] private GameObject letterTemplate;
 
-    public void ReadLetter(Letter letter)
+    public void ReadLetter(GameObject letter)
     {
         readingManager.gameObject.SetActive(true);
         CloseDrawer(false);
@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
         drawer.SetActive(true);
         GameManager.Instance.ClosingLetterDesk();
 
-        List<Letter> listLetters = GameManager.Instance.letterList;
+        List<GameObject> listLetters = GameManager.Instance.letterList;
 
         //setup a quel point on peut scroll vers la gauche
         maxScrollLeft = ((listLetters.Count - 1) * -500) + 1500;
