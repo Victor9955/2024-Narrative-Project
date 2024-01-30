@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     private MovableUI _letterDesk;
 
+    [SerializeField] private List<GameObject> _objectsToHide;
+
+
     [Header("- MOVEPOS -")]
     [SerializeField] private int desktX;
     [SerializeField] private int mapX;
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject letter = Instantiate(letterToCome[0], _letterParent.transform);
         _letterDesk = letter.GetComponent<MovableUI>();
-        letter.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
+        letter.transform.SetAsLastSibling();
         letterToCome.RemoveAt(0);
 
         //enlever ici et mettre lorsque l'on lance le dialogue
@@ -70,19 +73,27 @@ public class GameManager : MonoBehaviour
     public void ReadingLetterDesk ()
     {
         _letterDesk.gameObject.SetActive(true);
-        _pipette.SetActive(true);
+        HideObjects(false);
     }
 
     public void ClosingLetterDesk ()
     {
         _letterDesk.transform.localScale = _letterDesk.oldTransformScale;
         _letterDesk.gameObject.SetActive(false);
-        _pipette.SetActive(false);
+        HideObjects(true);
     }
 
 
     void GoTo(int x)
     {
         rootRef.DOMoveX(x, moveTime);
+    }
+
+    private void HideObjects(bool isHiding)
+    {
+        foreach (GameObject toHide in _objectsToHide)
+        {
+            toHide.SetActive(!isHiding);
+        }
     }
 }
