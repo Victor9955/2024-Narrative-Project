@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ResetOnRelease: MonoBehaviour, IEndDragHandler
+public class ResetOnRelease: MonoBehaviour
 {
     [SerializeField] Transform a;
     Vector3 scale;
@@ -11,11 +11,13 @@ public class ResetOnRelease: MonoBehaviour, IEndDragHandler
     private void Start()
     {
         scale = transform.localScale;
+        GameManager.Instance.goToMapButton.onClick.AddListener(ResetMap);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void ResetMap()
     {
         transform.position = a.position;
         transform.localScale = scale;
     }
+
 }

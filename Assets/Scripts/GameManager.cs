@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int mapX;
     [SerializeField] private float moveTime;
     [SerializeField] private Transform rootRef;
-    [SerializeField] private Button goToMapButton;
+    public Button goToMapButton;
     [SerializeField] private Button goToDeskButton;
 
 
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 1000;
         CreateLetter();
         goToMapButton.onClick.AddListener(delegate { GoTo(mapX);});
         goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
