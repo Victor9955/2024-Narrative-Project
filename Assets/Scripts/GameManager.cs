@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +20,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _zoomSpeed;
     [SerializeField] private float _maxScaleZoom;
     private MovableUI _letterDesk;
+
+    [Header("- MOVEPOS -")]
+    [SerializeField] private int desktX;
+    [SerializeField] private int mapX;
+    [SerializeField] private float moveTime;
+    [SerializeField] private Transform rootRef;
+    [SerializeField] private Button goToMapButton;
+    [SerializeField] private Button goToDeskButton;
 
 
     private static GameManager _instance;
@@ -39,6 +49,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CreateLetter();
+        goToMapButton.onClick.AddListener(delegate { GoTo(mapX);});
+        goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
     }
 
     private void CreateLetter ()
@@ -71,4 +83,9 @@ public class GameManager : MonoBehaviour
         _pipette.SetActive(false);
     }
 
+
+    void GoTo(int x)
+    {
+        rootRef.DOMoveX(x, moveTime);
+    }
 }
