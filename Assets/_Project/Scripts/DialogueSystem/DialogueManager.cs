@@ -12,7 +12,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     DialogueScriptableObject current;
-    [SerializeField] DialogueScriptableObject test;
 
 
     [Header("References")]
@@ -36,16 +35,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        group.interactable = false;
+        group.blocksRaycasts = false;
         goodChoice.onClick.AddListener(GoodResponse);
         badChoice.onClick.AddListener(BadResponse);
     }
-
-    [Button]
-    void TestDialogue()
-    {
-        BeginDialogue(test);
-    }
-
 
     public void BeginDialogue(DialogueScriptableObject m_dialogue)
     {
@@ -106,12 +100,16 @@ public class DialogueManager : MonoBehaviour
     public void Show()
     {
         DOVirtual.Float(0f, 1f, showSpeed, x => group.alpha = x);
+        group.interactable = true;
+        group.blocksRaycasts = true;
     }
 
     [Button]
     void Hide()
     {
         DOVirtual.Float(1f, 0f, showSpeed, x => group.alpha = x);
+        group.interactable = false;
+        group.blocksRaycasts = false;
     }
     void GoodResponse()
     {
