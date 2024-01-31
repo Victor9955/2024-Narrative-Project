@@ -13,7 +13,7 @@ public class PaperDesk : MonoBehaviour, IDropHandler
         {
 
             Pipette pip = eventData.pointerDrag.transform.GetComponent<Pipette>();
-            if (pip != null )
+            if (pip != null)
             {
                 transform.DOScale(Vector3.zero, 0.5f).OnComplete(() =>
                 {

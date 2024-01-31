@@ -11,7 +11,7 @@ public class Pipette : MonoBehaviour, IEndDragHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        transform.parent = _parent;
+        transform.SetParent(_parent);
         transform.SetAsLastSibling();
     }
 

@@ -168,18 +168,6 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2265279
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4190766
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2265279
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -209,11 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 221
+      value: 208.7
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6
+      value: -34.7
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -271,15 +259,15 @@ RectTransform:
   m_GameObject: {fileID: 91599190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2129856391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348, y: -71.8}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -335.7, y: -58.6}
+  m_SizeDelta: {x: 149, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91599192
 MonoBehaviour:
@@ -344,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d222bae14738baf4c9f9b30207cf32a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 0}
+  _parent: {fileID: 491303838}
 --- !u!1 &165622284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1153,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Orange est une soci\xE9t\xE9 fran\xE7aise de t\xE9l\xE9communications.
+    Elle comptait \xE0 la fin de 2019 pr\xE8s de 266 millions9 de clients dans le
+    monde1, des chiffres en hausse par rapport \xE0 ceux affich\xE9s en 201810. En
+    2020, l'entreprise est leader ou second op\xE9rateur dans 75 % des pays europ\xE9ens
+    o\xF9 elle est implant\xE9e et dans 83 % des pays en Afrique et au Moyen-Orient11.\r\n\r\nOrange
+    \xE9tait \xE0 l'origine une entreprise de t\xE9l\xE9communications britannique
+    devenue, en 1999, la filiale de Mannesmann, puis en 2000 celle du groupe France
+    T\xE9l\xE9com, entreprise publique. L'ancien monopole public fran\xE7ais s'est
+    donc internationalis\xE9 \xE0 la suite du rachat d'Orange. Le nouveau groupe
+    ainsi cr\xE9\xE9 est pr\xE9sent notamment en Europe, en Afrique et dans les Antilles.
+    \xC0 partir du rachat d'Orange, la plupart des marques du groupe France T\xE9l\xE9com
+    sont pass\xE9es sous la marque Orange. Depuis f\xE9vrier 2012 et le passage sous
+    la marque Orange des activit\xE9s de t\xE9l\xE9phonie fixe, la totalit\xE9 des
+    offres commercialis\xE9es par France T\xE9l\xE9com utilise cette marque, qui,
+    le 1er juillet 2013, est devenue la nouvelle appellation du groupe. Orange employait
+    en 2019 pr\xE8s de 148 000 personnes12, dont 88 000 en France.\r\n\r\nEn 2018,
+    Orange a r\xE9alis\xE9 un chiffre d'affaires de 41,391 milliards d'euros pour
+    l'ensemble de ses activit\xE9s et comptait 266 millions de clients dans le monde
+    dont 201 millions de clients en t\xE9l\xE9phonie mobile et 18,2 millions de clients
+    haut d\xE9bit fixe9."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad36941412825e247a1c7cc916c67a56, type: 2}
   m_sharedMaterial: {fileID: -5568682522828220384, guid: ad36941412825e247a1c7cc916c67a56, type: 2}
@@ -2940,7 +2947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 496.37, y: 0}
+  m_AnchoredPosition: {x: 523, y: 0}
   m_SizeDelta: {x: 292.74, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853696925
@@ -2994,12 +3001,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGuideButton: {fileID: 1774329562}
-  hideX: 14.8
+  hideX: 15.5
   showX: 8
   moveTime: 0.75
   isStartShown: 0
-  objectsToHide:
-  - {fileID: 815255}
+  objectsToHide: []
 --- !u!1 &1919933355
 GameObject:
   m_ObjectHideFlags: 0
