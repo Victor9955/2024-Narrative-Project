@@ -49,7 +49,7 @@ public class DialogueManager : MonoBehaviour
         characterIcon.sprite = current.characterIcon;
         characterName.text = current.characterName;
 
-        if(current.nextGood == null)
+        if(current.nextGood == null || current.type == DialogueType.Wait)
         {
             goodChoice.gameObject.SetActive(false);
         }
@@ -59,7 +59,7 @@ public class DialogueManager : MonoBehaviour
             goodChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.goodChoice;
         }
 
-        if (current.nextBad == null)
+        if (current.nextBad == null || current.type == DialogueType.Wait)
         {
             badChoice.gameObject.SetActive(false);
         }
@@ -89,7 +89,13 @@ public class DialogueManager : MonoBehaviour
 
         text.maxVisibleCharacters = m_text.Length;
 
-        if (current.nextBad == null && current.nextGood == null)
+
+        if(current.type == DialogueType.Wait)
+        {
+            yield return new WaitForSeconds(current.waitTime);
+            BeginDialogue(current.next);
+        }
+        else if (current.nextBad == null && current.nextGood == null)
         {
             yield return new WaitForSeconds(3f);
             Hide();

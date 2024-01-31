@@ -1,6 +1,13 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum DialogueType
+{
+    Choice,
+    Wait
+}
 
 
 [CreateAssetMenu(menuName = "write/Dialogue")]
@@ -14,9 +21,29 @@ public class DialogueScriptableObject : ScriptableObject
     public string textKey;
     public float talkSpeed = 25f;
 
+
+    public DialogueType type;
+
+
+    bool isWait
+    {
+        get
+        {
+            return type == DialogueType.Wait;
+        }
+    }
+
+
+    [ShowIf("isWait")]
+    public float waitTime = 4f;
+    [ShowIf("isWait")]
+    public DialogueScriptableObject next;
+
+
     [Header("Choix")]
     public string goodChoice;
     public string badChoice;
+
 
     public DialogueScriptableObject nextGood;
     public DialogueScriptableObject nextBad;
