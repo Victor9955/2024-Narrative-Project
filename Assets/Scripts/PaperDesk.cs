@@ -16,7 +16,7 @@ public class PaperDesk : MonoBehaviour, IDropHandler
         {
 
             Pipette pip = eventData.pointerDrag.transform.GetComponent<Pipette>();
-            if (pip != null )
+            if (pip != null)
             {
                 GameObject tache = Instantiate(_liquidePrefab, transform);
 

@@ -16,6 +16,9 @@ MonoBehaviour:
   characterIcon: {fileID: 21300000, guid: 789ba516eb8ed56449943e256fb63179, type: 3}
   textKey: RESP_CAPTAIN_BAD
   talkSpeed: 25
+  type: 0
+  waitTime: 4
+  next: {fileID: 0}
   goodChoice: Bonjour
   badChoice: Je veut pas te parler
   nextGood: {fileID: 11400000, guid: 8132c868368b5ca4db1559a5ff068d72, type: 2}

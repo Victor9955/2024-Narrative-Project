@@ -48,7 +48,7 @@ Material:
     - _ColorMask: 15
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 1.5
+    - _Speed: 6.75
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
@@ -56,7 +56,7 @@ Material:
     - _StencilWriteMask: 255
     - _UseUIAlphaClip: 0
     m_Colors:
-    - _Amount: {r: 0.5, g: 1.87, b: 0, a: 0}
+    - _Amount: {r: 7.6, g: 7.15, b: 0, a: 0}
     - _CandleColor: {r: 1, g: 0.8104067, b: 0.36275637, a: 0.4666667}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

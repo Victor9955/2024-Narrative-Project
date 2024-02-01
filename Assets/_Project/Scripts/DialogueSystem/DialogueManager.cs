@@ -12,7 +12,6 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     DialogueScriptableObject current;
-    [SerializeField] DialogueScriptableObject test;
 
 
     [Header("References")]
@@ -36,16 +35,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        group.interactable = false;
+        group.blocksRaycasts = false;
         goodChoice.onClick.AddListener(GoodResponse);
         badChoice.onClick.AddListener(BadResponse);
     }
-
-    [Button]
-    void TestDialogue()
-    {
-        BeginDialogue(test);
-    }
-
 
     public void BeginDialogue(DialogueScriptableObject m_dialogue)
     {
@@ -55,7 +49,7 @@ public class DialogueManager : MonoBehaviour
         characterIcon.sprite = current.characterIcon;
         characterName.text = current.characterName;
 
-        if(current.nextGood == null)
+        if(current.nextGood == null || current.type == DialogueType.Wait)
         {
             goodChoice.gameObject.SetActive(false);
         }
@@ -65,7 +59,7 @@ public class DialogueManager : MonoBehaviour
             goodChoice.GetComponentInChildren<TextMeshProUGUI>().text = current.goodChoice;
         }
 
-        if (current.nextBad == null)
+        if (current.nextBad == null || current.type == DialogueType.Wait)
         {
             badChoice.gameObject.SetActive(false);
         }
@@ -95,7 +89,13 @@ public class DialogueManager : MonoBehaviour
 
         text.maxVisibleCharacters = m_text.Length;
 
-        if (current.nextBad == null && current.nextGood == null)
+
+        if(current.type == DialogueType.Wait)
+        {
+            yield return new WaitForSeconds(current.waitTime);
+            BeginDialogue(current.next);
+        }
+        else if (current.nextBad == null && current.nextGood == null)
         {
             yield return new WaitForSeconds(3f);
             Hide();
@@ -106,12 +106,16 @@ public class DialogueManager : MonoBehaviour
     public void Show()
     {
         DOVirtual.Float(0f, 1f, showSpeed, x => group.alpha = x);
+        group.interactable = true;
+        group.blocksRaycasts = true;
     }
 
     [Button]
     void Hide()
     {
         DOVirtual.Float(1f, 0f, showSpeed, x => group.alpha = x);
+        group.interactable = false;
+        group.blocksRaycasts = false;
     }
     void GoodResponse()
     {
