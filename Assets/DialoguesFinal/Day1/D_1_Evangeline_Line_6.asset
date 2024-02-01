@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51673a3eb3493e740a27baf0caf036b9, type: 3}
+  m_Name: D_1_Evangeline_Line_6
+  m_EditorClassIdentifier: 
+  characterName: Evangeline
+  characterIcon: {fileID: 0}
+  textKey: D_1_Evangeline_Line_6
+  talkSpeed: 25
+  type: 0
+  waitTime: 1.5
+  next: {fileID: 11400000, guid: 6d85abdce1becbd4b81ab8e0cfda0d5b, type: 2}
+  goodChoice: "Il faudrait d\xE9j\xE0 r\xE9ussir. On est encore loin d'avoir atteint
+    de nos objectif. Je me soucis pas du reste."
+  badChoice: "Une fois le gouverneur tomb\xE9, il faudrat s'assurer d'un avenir stable.
+    Ce n'est pas suffisant de d\xE9truire le syst\xE8me, il faudrat en rebatir un
+    nouveaux, un meilleur, un qui prend soin de ses habitants."
+  nextGood: {fileID: 11400000, guid: 1bb911fce4e840442a65a887649afcd7, type: 2}
+  nextBad: {fileID: 11400000, guid: 1bb911fce4e840442a65a887649afcd7, type: 2}

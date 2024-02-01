@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject beingDragged;
 
+    public int currentDay = 0;
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -74,7 +76,6 @@ public class GameManager : MonoBehaviour
         journal.transform.SetAsLastSibling();
 
         letterToCome.RemoveAt(0);
-
     }
 
     public void ArchiveJournal(GameObject journal)

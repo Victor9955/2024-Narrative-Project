@@ -6,7 +6,8 @@ using UnityEngine;
 public enum DialogueType
 {
     Choice,
-    Wait
+    Wait,
+    ShowMap
 }
 
 
@@ -29,7 +30,7 @@ public class DialogueScriptableObject : ScriptableObject
     {
         get
         {
-            return type == DialogueType.Wait;
+            return type == DialogueType.Wait || type == DialogueType.ShowMap;
         }
     }
 
