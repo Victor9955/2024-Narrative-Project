@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 3049210691322648026}
   - component: {fileID: 6575137796211868999}
   - component: {fileID: 1859657334267650136}
-  - component: {fileID: 8587674128659745082}
   m_Layer: 5
-  m_Name: Letter2
+  m_Name: Letter2Resolved
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 61848095c8ddbca47a2b43936deee224, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -67,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: fe4a37487fd8cef4aa2e4243b898f874, type: 3}
+  m_Texture: {fileID: 2800000, guid: a6efd11838492894fabd808ee63ad5a8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -88,17 +87,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zoomable: 1
   _maxScaleZoom: 3
-  _zoomSpeed: 0.001
+  _zoomSpeed: 0.0005
   oldTransformScale: {x: 0, y: 0, z: 0}
---- !u!114 &8587674128659745082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991613698391120668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8707506b4f65a804f92945ac7aa3f268, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

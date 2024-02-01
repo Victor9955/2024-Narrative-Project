@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,11 +13,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float _maxScrollRight;
     [SerializeField] private float _speedDrawer;
 
+    [SerializeField] private Button _drawerBox;
+
     [Header("- SETUP READING -")]
     [SerializeField] private ReadingManager _readingManager;
 
     //runtime
     private float maxScrollLeft;
+
+    private void Start()
+    {
+        _drawerBox.onClick.AddListener(OpenDrawer);
+    }
 
     public void ReadLetter(GameObject letter)
     {
@@ -27,6 +35,7 @@ public class UIManager : MonoBehaviour
 
     public void CloseLetter ()
     {
+        _drawerBox.interactable = true;
         _readingManager.gameObject.SetActive(false);
         _readingManager.EndReadingLetter();
 
@@ -50,6 +59,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenDrawer ()
     {
+        _drawerBox.interactable = false;
         _menuDrawer.SetActive(true);
         GameManager.Instance.ClosingLetterDesk();
 
@@ -62,8 +72,7 @@ public class UIManager : MonoBehaviour
         //remplis le tiroir de lettres
         for (int i = 0; i < listLetters.Count; i++)
         {
-            GameObject letterDrawer = Instantiate(_letterTemplate, _drawerLocation.position, Quaternion.identity, _drawerLocation);
-            LetterDrawer letter = letterDrawer.GetComponent<LetterDrawer>();
+            LetterDrawer letter = Instantiate(_letterTemplate, _drawerLocation.position, Quaternion.identity, _drawerLocation).GetComponent<LetterDrawer>();
 
             letter.letterPrefab = listLetters[i];
             letter.Setup(this);
@@ -81,6 +90,7 @@ public class UIManager : MonoBehaviour
 
         if (isEnding)
         {
+            _drawerBox.interactable = true;
             GameManager.Instance.ReadingLetterDesk();
         }
     }
