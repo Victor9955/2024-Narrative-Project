@@ -13,6 +13,7 @@ public class LetterDrawer : MonoBehaviour, IPointerClickHandler
 
     public void Setup (UIManager managerScript)
     {
+        Debug.Log(letterPrefab);
         _image.texture = letterPrefab.GetComponent<RawImage>().texture;
         _manager = managerScript;
     }

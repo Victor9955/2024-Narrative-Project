@@ -9,13 +9,16 @@ public class GameManager : MonoBehaviour
 {
 
     public List<GameObject> letterToCome = new List<GameObject>();
+    public List<GameObject> journalToCome = new List<GameObject>();
 
     public List<GameObject> letterDecrypted = new List<GameObject>();
     public List<GameObject> letterList = new List<GameObject>();
 
+    private MovableUI _currentJournal;
+
     [Header("- SETUP -")]
     [SerializeField] private GameObject _letterParent;
-    [SerializeField] private GameObject _pipette;
+    [SerializeField] private GameObject _deleteButtonPrefab;
 
     private MovableUI _letterDesk;
 
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
     public Button goToMapButton;
     [SerializeField] private Button goToDeskButton;
 
+    public GameObject beingDragged;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -50,36 +54,70 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 1000;
-        CreateLetter();
+        SpawnNewsAndLetter();
         goToMapButton.onClick.AddListener(delegate { GoTo(mapX);});
         goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
     }
 
-    private void CreateLetter ()
+    private void SpawnNewsAndLetter ()
     {
         GameObject letter = Instantiate(letterToCome[0], _letterParent.transform);
+        Journal journal = Instantiate(journalToCome[0], _letterParent.transform).GetComponent<Journal>();
+
         _letterDesk = letter.GetComponent<MovableUI>();
+        _currentJournal = journal.GetComponent<MovableUI>();
+
+        GameObject button = Instantiate(_deleteButtonPrefab, journal.anchor.transform);
+        journal.button = button;
+
         letter.transform.SetAsLastSibling();
+        journal.transform.SetAsLastSibling();
+
         letterToCome.RemoveAt(0);
 
-        //enlever ici et mettre lorsque l'on lance le dialogue
-        EndLetterEnigme();
     }
 
-    public void EndLetterEnigme ()
+    public void ArchiveJournal(GameObject journal)
     {
+        letterList.Add(journalToCome[0]);
+        journalToCome.RemoveAt(0);
+        Destroy(journal);
+    }
+
+    public void EndEnigme ()
+    {
+        if (_currentJournal != null)
+        {
+            ArchiveJournal(_currentJournal.gameObject);
+        }
+        if (_letterDesk != null)
+        {
+            Destroy(_letterDesk);
+        }
+
         letterList.Add(letterDecrypted[0]);
         letterDecrypted.RemoveAt(0);
     }
 
     public void ReadingLetterDesk ()
     {
+        if (_currentJournal != null)
+        {
+            _currentJournal.gameObject.SetActive(true);
+        }
+
         _letterDesk.gameObject.SetActive(true);
         HideObjects(false);
     }
 
     public void ClosingLetterDesk ()
     {
+        if (_currentJournal != null)
+        {
+            _currentJournal.gameObject.SetActive(false);
+            _currentJournal.transform.localScale = _currentJournal.oldTransformScale;
+        }
+
         _letterDesk.transform.localScale = _letterDesk.oldTransformScale;
         _letterDesk.gameObject.SetActive(false);
         HideObjects(true);
