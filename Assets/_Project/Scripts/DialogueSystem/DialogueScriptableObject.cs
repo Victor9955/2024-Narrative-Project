@@ -23,7 +23,7 @@ public class DialogueScriptableObject : ScriptableObject
     public float talkSpeed = 25f;
 
 
-    public DialogueType type;
+    public DialogueType type = DialogueType.Wait;
 
 
     bool isWait
@@ -36,7 +36,7 @@ public class DialogueScriptableObject : ScriptableObject
 
 
     [ShowIf("isWait")]
-    public float waitTime = 4f;
+    public float waitTime = 1.5f;
     [ShowIf("isWait")]
     public DialogueScriptableObject next;
 
