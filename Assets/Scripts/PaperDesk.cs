@@ -23,7 +23,7 @@ public class PaperDesk : MonoBehaviour, IDropHandler
                 tache.transform.DOScale(tache.transform.localScale * 2, 0.5f).OnComplete(() =>
                 {
                     tache.GetComponent<RawImage>().DOColor(_colorFaded, 0.5f);
-                    transform.DOScale(Vector3.zero, 0.5f).OnComplete(DestroyObject);
+                    GetComponent<RawImage>().DOColor(_colorFaded, 0.5f).OnComplete(DestroyObject);
                 });
             }
         }
