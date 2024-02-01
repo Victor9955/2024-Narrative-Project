@@ -2694,6 +2694,7 @@ MonoBehaviour:
   rootRef: {fileID: 1289088323}
   goToMapButton: {fileID: 562578654}
   goToDeskButton: {fileID: 253463571}
+  beingDragged: {fileID: 0}
 --- !u!4 &1773493114
 Transform:
   m_ObjectHideFlags: 0

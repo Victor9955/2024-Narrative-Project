@@ -29,6 +29,7 @@ public class DialogueStarter : MonoBehaviour
 
     public void StartTalking(int index)
     {
+        Debug.Log(index);
         DialogueManager.instance.Show();
         DialogueManager.instance.BeginDialogue(dialogues[index]);
     }

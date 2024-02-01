@@ -1,8 +1,10 @@
 using DG.Tweening;
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +26,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] CanvasGroup group;
     [SerializeField] float showSpeed = 2f;
 
+    public static event Action OnFinishedDialogue;
+
     Coroutine coroutine;
     private void Awake()
     {
@@ -39,17 +43,48 @@ public class DialogueManager : MonoBehaviour
         group.blocksRaycasts = false;
         goodChoice.onClick.AddListener(GoodResponse);
         badChoice.onClick.AddListener(BadResponse);
+        MapManager.OnClickLocation += MapManager_OnClickLocation;
+    }
+
+    private void MapManager_OnClickLocation(bool obj)
+    {
+        if(current != null)
+        {
+            if(current.type == DialogueType.ShowMap && current.next != null)
+            {
+                Show();
+                BeginDialogue(current.next);
+            }
+        }
     }
 
     public void BeginDialogue(DialogueScriptableObject m_dialogue)
     {
+        Debug.Log("Begin Dialogue");
         if (!GoogleSheetGetter.isFinished) return;
         if (coroutine != null) return;
         current = m_dialogue;
-        characterIcon.sprite = current.characterIcon;
-        characterName.text = current.characterName;
 
-        if(current.nextGood == null || current.type == DialogueType.Wait)
+        if(current.characterIcon == null)
+        {
+            characterIcon.gameObject.SetActive(false);
+        }
+        else
+        {
+            characterIcon.gameObject.SetActive(true);
+            characterIcon.sprite = current.characterIcon;
+        }
+
+        if(current.characterName == null)
+        {
+            characterName.text = "NoName";
+        }
+        else
+        {
+            characterName.text = current.characterName;
+        }
+
+        if (current.nextGood == null || current.type == DialogueType.Wait)
         {
             goodChoice.gameObject.SetActive(false);
         }
@@ -70,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         }
 
 
-        StartCoroutine(Talk(GoogleSheetGetter.data[current.textKey][GameSettings.language], current.talkSpeed));
+        coroutine = StartCoroutine(Talk(GoogleSheetGetter.data[current.textKey][GameSettings.language], current.talkSpeed));
     }
 
     IEnumerator Talk(string m_text, float m_speed)
@@ -88,17 +123,25 @@ public class DialogueManager : MonoBehaviour
         }
 
         text.maxVisibleCharacters = m_text.Length;
+        coroutine = null;
 
-
-        if(current.type == DialogueType.Wait)
+        if (current.type == DialogueType.Wait && current.next != null)
         {
             yield return new WaitForSeconds(current.waitTime);
             BeginDialogue(current.next);
         }
-        else if (current.nextBad == null && current.nextGood == null)
+        else if (current.nextBad == null && current.nextGood == null || (current.type == DialogueType.Wait && current.next == null) || current.type == DialogueType.ShowMap)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
             Hide();
+            if(current.type == DialogueType.ShowMap)
+            {
+                MapManager.InvokeShowMap();
+            }
+            else
+            {
+                OnFinishedDialogue?.Invoke();
+            }
         }
     }
 
@@ -121,6 +164,11 @@ public class DialogueManager : MonoBehaviour
     {
         if(current.nextGood != null)
         {
+            if(coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
             BeginDialogue(current.nextGood);
         }
     }
@@ -129,6 +177,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (current.nextBad != null)
         {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
             BeginDialogue(current.nextBad);
         }
     }
