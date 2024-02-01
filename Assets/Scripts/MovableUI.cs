@@ -6,8 +6,9 @@ using UnityEngine.UI;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
-public class MovableUI : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class MovableUI : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [Header("- SETUP -")]
     [SerializeField] private bool _zoomable;
@@ -57,12 +58,7 @@ public class MovableUI : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDra
     }
 
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
 
-        _pos = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
-        _image.raycastTarget = false;
-    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -87,10 +83,15 @@ public class MovableUI : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDra
         _image.raycastTarget = true;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         _pos = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
         _image.raycastTarget = false;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        _image.raycastTarget = true;
     }
 
     [Button]
@@ -115,5 +116,4 @@ public class MovableUI : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDra
         transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x, oldTransformScale.x, oldTransformScale.x * _maxScaleZoom), Mathf.Clamp(transform.localScale.y, oldTransformScale.y, oldTransformScale.y * _maxScaleZoom));
     }
 
-    
 }

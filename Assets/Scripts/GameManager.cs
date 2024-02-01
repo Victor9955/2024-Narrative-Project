@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
     }
 
-    private void SpawnNewsAndLetter ()
+    public void SpawnNewsAndLetter ()
     {
         GameObject letter = Instantiate(letterToCome[0], _letterParent.transform);
         Journal journal = Instantiate(journalToCome[0], _letterParent.transform).GetComponent<Journal>();

@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.31587896
+      value: 0.23296073
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_LocalScale.z
@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -36
+      value: -69.8
       objectReference: {fileID: 0}
     - target: {fileID: 8498703142074153589, guid: 4182945f8aa780d45be7af0741e29a96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -372,14 +372,14 @@ RectTransform:
   m_GameObject: {fileID: 91599190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
+  m_LocalScale: {x: 0.496912, y: 0.496912, z: 0.496912}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2129856391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348, y: -71.8}
+  m_AnchoredPosition: {x: -336, y: -60.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91599192
@@ -2808,9 +2808,9 @@ MonoBehaviour:
   - {fileID: 6991613698391120668, guid: 85774b59d89808f40b5a2dd82b60a5b9, type: 3}
   journalToCome:
   - {fileID: 6991613698391120668, guid: 64c708b125ab3954f9e50c5c5fd9dd3e, type: 3}
-  - {fileID: 6991613698391120668, guid: d35463b6fb4a96b40852623af2e91637, type: 3}
-  - {fileID: 6991613698391120668, guid: 44447e68f396a11439d33e9cef15ba30, type: 3}
-  - {fileID: 6991613698391120668, guid: 7dea18475bdbc934abfef6ce075c39c5, type: 3}
+  - {fileID: 6991613698391120668, guid: 2b41750cdfdd1e3428bcfaab8de15ee4, type: 3}
+  - {fileID: 6991613698391120668, guid: 402663354a141f7469a942bb772b5e16, type: 3}
+  - {fileID: 6991613698391120668, guid: 43af15f8214d0f645aea503734138c99, type: 3}
   letterDecrypted:
   - {fileID: 6991613698391120668, guid: 2db48a64d5ae5b64cb2da9f20fa45591, type: 3}
   - {fileID: 6991613698391120668, guid: e79b4b9910801844b90c23d21a871d36, type: 3}
