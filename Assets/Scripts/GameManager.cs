@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public Button goToMapButton;
     [SerializeField] private Button goToDeskButton;
 
-    public GameObject beingDragged;
+    [HideInInspector] public GameObject beingDragged;
 
     public int currentDay = 0;
 
@@ -57,8 +57,26 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 1000;
         SpawnNewsAndLetter();
+        MapManager.OnClickLocation += MapManager_OnClickLocation; ;
         goToMapButton.onClick.AddListener(delegate { GoTo(mapX);});
         goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
+    }
+
+    private void MapManager_OnClickLocation(bool obj)
+    {
+        SpawnNewsAndLetter();
+        currentDay++;
+        if (currentDay == 3)
+        {
+            if (obj)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 
     public void SpawnNewsAndLetter ()
@@ -93,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
         if (_letterDesk != null)
         {
-            Destroy(_letterDesk);
+            Destroy(_letterDesk.gameObject);
         }
 
         letterList.Add(letterDecrypted[0]);
