@@ -16,7 +16,7 @@ MonoBehaviour:
   characterIcon: {fileID: 0}
   textKey: D_2_C_1_Jasper_Line_1
   talkSpeed: 25
-  type: 2
+  type: 1
   waitTime: 1.5
   next: {fileID: 11400000, guid: d7496729bd6cea44fab5c63f1ef97b85, type: 2}
   goodChoice: 
