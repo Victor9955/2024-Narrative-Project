@@ -7,6 +7,7 @@ public static class MapManager
 {
     public static event Action<bool> OnClickLocation;
     public static event Action ShowMap;
+    public static event Action HideMap;
 
     public static void InvokeShowMap()
     {
@@ -16,5 +17,11 @@ public static class MapManager
     public static void InvokeOnClickLocation(bool value)
     {
         OnClickLocation?.Invoke(value);
+        HideMap?.Invoke();
+    }
+
+    public static void InvokeHideMap()
+    {
+        HideMap?.Invoke();
     }
 }
