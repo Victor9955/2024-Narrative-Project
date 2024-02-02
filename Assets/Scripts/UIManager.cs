@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //_drawerBox.onClick.AddListener(OpenDrawer);
+        _drawerBox.onClick.AddListener(OpenDrawer);
     }
 
     public void ReadLetter(GameObject letter)
