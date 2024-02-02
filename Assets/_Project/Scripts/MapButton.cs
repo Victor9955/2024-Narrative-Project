@@ -13,6 +13,12 @@ public class MapButton : MonoBehaviour
     {
         myButton.onClick.AddListener(OnClick);
         MapManager.ShowMap += MapManager_ShowMap;
+        MapManager.HideMap += MapManager_HideMap;
+        myButton.interactable = false;
+    }
+
+    private void MapManager_HideMap()
+    {
         myButton.interactable = false;
     }
 
