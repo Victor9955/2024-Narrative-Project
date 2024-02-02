@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     public List<GameObject> letterDecrypted = new List<GameObject>();
     public List<GameObject> letterList = new List<GameObject>();
 
+    public GameObject looseObject;
+    public GameObject winObject;
+
+    public Animator animatorLoose;
+    public Animator animatorWin;
+
     private MovableUI _currentJournal;
 
     [Header("- SETUP -")]
@@ -34,6 +40,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button goToDeskButton;
 
     [HideInInspector] public GameObject beingDragged;
+
+    private bool whatIsEnd;
 
     public int currentDay = 0;
 
@@ -57,7 +65,8 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 1000;
         SpawnNewsAndLetter();
-        MapManager.OnClickLocation += MapManager_OnClickLocation; ;
+        MapManager.OnClickLocation += MapManager_OnClickLocation;
+        DialogueManager.OnFinishedDialogue  += LaunchEnd;        
         goToMapButton.onClick.AddListener(delegate { GoTo(mapX);});
         goToDeskButton.onClick.AddListener(delegate { GoTo(desktX);});
     }
@@ -66,15 +75,22 @@ public class GameManager : MonoBehaviour
     {
         SpawnNewsAndLetter();
         currentDay++;
+        whatIsEnd = obj;
+    }
+
+    public void LaunchEnd ()
+    {
         if (currentDay == 3)
         {
-            if (obj)
+            if (whatIsEnd)
             {
-
+                winObject.SetActive(true);
+                animatorWin.SetBool("isTrue", true);
             }
             else
             {
-
+                looseObject.SetActive(true);
+                animatorLoose.SetBool("isTrue", true);
             }
         }
     }

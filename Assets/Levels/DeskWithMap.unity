@@ -3107,7 +3107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -880, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &735819814
@@ -4485,7 +4485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.0789853, b: 0.0789853, a: 0.14117648}
+  m_Color: {r: 1, g: 0.8117647, b: 0.07058824, a: 0.14117648}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6184,6 +6184,10 @@ MonoBehaviour:
   - {fileID: 6991613698391120668, guid: e79b4b9910801844b90c23d21a871d36, type: 3}
   - {fileID: 6991613698391120668, guid: 696cb14c89c11d042b1312da75f5d0a8, type: 3}
   letterList: []
+  looseObject: {fileID: 2140297303}
+  winObject: {fileID: 712867387}
+  animatorLoose: {fileID: 1327070010}
+  animatorWin: {fileID: 735819819}
   _letterParent: {fileID: 491303837}
   _deleteButtonPrefab: {fileID: 3451205515898748245, guid: 976d29f2c0fdc7c4884451f349ad6c1b, type: 3}
   _objectsToHide:
@@ -7423,7 +7427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -879.99994, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2141172578 stripped
