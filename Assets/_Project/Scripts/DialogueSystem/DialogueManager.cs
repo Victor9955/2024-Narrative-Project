@@ -60,7 +60,7 @@ public class DialogueManager : MonoBehaviour
 
     public void BeginDialogue(DialogueScriptableObject m_dialogue)
     {
-        Debug.Log("Begin Dialogue");
+        //Debug.Log("Begin Dialogue");
         if (!GoogleSheetGetter.isFinished) return;
         if (coroutine != null) return;
         current = m_dialogue;

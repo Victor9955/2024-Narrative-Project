@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51673a3eb3493e740a27baf0caf036b9, type: 3}
+  m_Name: D_3_Evangeline_Line_12
+  m_EditorClassIdentifier: 
+  characterName: 
+  characterIcon: {fileID: 0}
+  textKey: D_3_Evangeline_Line_12
+  talkSpeed: 25
+  type: 0
+  waitTime: 1.5
+  next: {fileID: 0}
+  goodChoice: Jasper est en effet peu recommandable cependant il a bel et bien effectuer
+    ses missions.
+  badChoice: "Qu'est-ce que tu sous entends? Tu veux qu'on se d\xE9barasse de lui?"
+  nextGood: {fileID: 11400000, guid: 5e0ff70d77b3ab84abc5989ab10409f8, type: 2}
+  nextBad: {fileID: 11400000, guid: d83c0109cd3400649b3a48500212144a, type: 2}
