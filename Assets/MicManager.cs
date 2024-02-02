@@ -26,7 +26,6 @@ public class MicManager : MonoBehaviour
         {
             item.SetActive(true);
         }
-        GameManager.Instance.currentDay++;
     }
 
     void ShowFinishedChoice()

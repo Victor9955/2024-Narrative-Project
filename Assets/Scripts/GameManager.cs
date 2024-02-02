@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         SpawnNewsAndLetter();
         currentDay++;
+        Debug.Log(currentDay);
         whatIsEnd = obj;
     }
 
