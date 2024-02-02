@@ -173,6 +173,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void Skip()
+    {
+        if (current.next != null && current.type == DialogueType.Wait)
+        {
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
+            BeginDialogue(current.next);
+        }
+    }
+
     void BadResponse()
     {
         if (current.nextBad != null)
