@@ -30,7 +30,7 @@ public class DialogueStarter : MonoBehaviour
     public void StartTalking(int index)
     {
         //Debug.Log(index);
-        if(index < dialogues.Count - 1)
+        if(index < dialogues.Count)
         {
             DialogueManager.instance.Show();
             DialogueManager.instance.BeginDialogue(dialogues[index]);
