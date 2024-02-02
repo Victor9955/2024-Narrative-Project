@@ -18,6 +18,7 @@ public class PaperDesk : MonoBehaviour, IDropHandler
             Pipette pip = eventData.pointerDrag.transform.GetComponent<Pipette>();
             if (pip != null)
             {
+                PlayPipetteSound.instance.Play();
                 GameObject tache = Instantiate(_liquidePrefab, transform);
 
                 tache.transform.DOScale(tache.transform.localScale * 2, 0.5f).OnComplete(() =>
