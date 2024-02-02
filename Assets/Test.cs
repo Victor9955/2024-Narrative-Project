@@ -11,6 +11,7 @@ public class Test : MonoBehaviour
     public List<DialogueScriptableObject> list = new List<DialogueScriptableObject>();
     [SerializeField] Sprite evangeline;
     [SerializeField] Sprite jasper;
+    [SerializeField] Sprite player;
 
 
     [Button]
@@ -43,6 +44,7 @@ public class Test : MonoBehaviour
                 if(item2 == 'P')
                 {
                     item.characterName = "Éléon";
+                    item.characterIcon = player;
                     break;
                 }
                 else if(item2 == 'E')
