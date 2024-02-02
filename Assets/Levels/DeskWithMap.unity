@@ -6988,7 +6988,7 @@ MonoBehaviour:
   _menuDrawer: {fileID: 692543513}
   _letterTemplate: {fileID: 699817457935360424, guid: bfeacb8a24bce6c47b019a2e0c2a8f40, type: 3}
   _drawerLocation: {fileID: 1249760969}
-  _maxScrollRight: 1000
+  _maxScrollRight: 200
   _speedDrawer: 0.005
   _drawerBox: {fileID: 1462462429}
   _readingManager: {fileID: 165622288}
