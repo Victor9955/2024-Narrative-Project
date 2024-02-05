@@ -73,10 +73,13 @@ public class GameManager : MonoBehaviour
 
     private void MapManager_OnClickLocation(bool obj)
     {
-        SpawnNewsAndLetter();
         currentDay++;
-        Debug.Log(currentDay);
         whatIsEnd = obj;
+        if (currentDay == 3)
+        {
+            return;
+        }
+        SpawnNewsAndLetter();
     }
 
     public void LaunchEnd ()
